@@ -2,18 +2,18 @@ package com.contrarywind.listener;
 
 import android.view.MotionEvent;
 
-import com.contrarywind.view.WheelView;
+import com.contrarywind.view.SimpleWheelView;
 
 
 /**
  * 手势监听
  */
-public final class LoopViewGestureListener extends android.view.GestureDetector.SimpleOnGestureListener {
+public final class SimpleLoopViewGestureListener extends android.view.GestureDetector.SimpleOnGestureListener {
 
-    private final WheelView wheelView;
+    private final SimpleWheelView wheelView;
 
 
-    public LoopViewGestureListener(WheelView wheelView) {
+    public SimpleLoopViewGestureListener(SimpleWheelView wheelView) {
         this.wheelView = wheelView;
     }
 

@@ -16,24 +16,24 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 
-import com.contrarywind.configure.PickerOptions;
-import com.contrarywind.listener.OnDismissListener;
-import com.contrarywind.utils.PickerViewAnimateUtil;
+import com.contrarywind.configure.SimplePickerOptions;
+import com.contrarywind.listener.OnSimpleDismissListener;
+import com.contrarywind.utils.SimplePickerViewAnimateUtil;
 
 
 /**
  * Created by Sai on 15/11/22.
  * 精仿iOSPickerViewController控件
  */
-public class BasePickerView {
+public class SimpleBasePickerView {
 
     private Context context;
     protected ViewGroup contentContainer;
     private ViewGroup rootView;//附加View 的 根View
     private ViewGroup dialogView;//附加Dialog 的 根View
 
-    protected PickerOptions mPickerOptions;
-    private OnDismissListener onDismissListener;
+    protected SimplePickerOptions mPickerOptions;
+    private OnSimpleDismissListener onDismissListener;
     private boolean dismissing;
 
     private Animation outAnim;
@@ -46,7 +46,7 @@ public class BasePickerView {
     protected View clickView;//是通过哪个View弹出的
     private boolean isAnim = true;
 
-    public BasePickerView(Context context) {
+    public SimpleBasePickerView(Context context) {
         this.context = context;
     }
 
@@ -59,7 +59,7 @@ public class BasePickerView {
         LayoutInflater layoutInflater = LayoutInflater.from(context);
         if (isDialog()) {
             //如果是对话框模式
-            dialogView = (ViewGroup) layoutInflater.inflate(R.layout.layout_basepickerview, null, false);
+            dialogView = (ViewGroup) layoutInflater.inflate(R.layout.simple_layout_basepickerview, null, false);
             //设置界面的背景为透明
             dialogView.setBackgroundColor(Color.TRANSPARENT);
             //这个是真正要加载选择器的父布局
@@ -86,7 +86,7 @@ public class BasePickerView {
                 mPickerOptions.decorView = (ViewGroup) ((Activity) context).getWindow().getDecorView();
             }
             //将控件添加到decorView中
-            rootView = (ViewGroup) layoutInflater.inflate(R.layout.layout_basepickerview, mPickerOptions.decorView, false);
+            rootView = (ViewGroup) layoutInflater.inflate(R.layout.simple_layout_basepickerview, mPickerOptions.decorView, false);
             rootView.setLayoutParams(new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
             if (mPickerOptions.outSideColor != -1) {
                 rootView.setBackgroundColor(mPickerOptions.outSideColor);
@@ -217,7 +217,7 @@ public class BasePickerView {
                 isShowing = false;
                 dismissing = false;
                 if (onDismissListener != null) {
-                    onDismissListener.onDismiss(BasePickerView.this);
+                    onDismissListener.onDismiss(SimpleBasePickerView.this);
                 }
             }
         });
@@ -226,16 +226,16 @@ public class BasePickerView {
     }
 
     private Animation getInAnimation() {
-        int res = PickerViewAnimateUtil.getAnimationResource(this.animGravity, true);
+        int res = SimplePickerViewAnimateUtil.getAnimationResource(this.animGravity, true);
         return AnimationUtils.loadAnimation(context, res);
     }
 
     private Animation getOutAnimation() {
-        int res = PickerViewAnimateUtil.getAnimationResource(this.animGravity, false);
+        int res = SimplePickerViewAnimateUtil.getAnimationResource(this.animGravity, false);
         return AnimationUtils.loadAnimation(context, res);
     }
 
-    public BasePickerView setOnDismissListener(OnDismissListener onDismissListener) {
+    public SimpleBasePickerView setOnDismissListener(OnSimpleDismissListener onDismissListener) {
         this.onDismissListener = onDismissListener;
         return this;
     }
@@ -269,7 +269,7 @@ public class BasePickerView {
         }
     };
 
-    protected BasePickerView setOutSideCancelable(boolean isCancelable) {
+    protected SimpleBasePickerView setOutSideCancelable(boolean isCancelable) {
 
         if (rootView != null) {
             View view = rootView.findViewById(R.id.outmost_container);
@@ -328,7 +328,7 @@ public class BasePickerView {
                 @Override
                 public void onDismiss(DialogInterface dialog) {
                     if (onDismissListener != null) {
-                        onDismissListener.onDismiss(BasePickerView.this);
+                        onDismissListener.onDismiss(SimpleBasePickerView.this);
                     }
                 }
             });

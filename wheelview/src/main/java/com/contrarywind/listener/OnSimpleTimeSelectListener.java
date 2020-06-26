@@ -8,7 +8,7 @@ import java.util.Date;
  * Created by xiaosong on 2018/3/20.
  */
 
-public interface OnTimeSelectListener {
+public interface OnSimpleTimeSelectListener {
 
     void onTimeSelect(Date date, View v);
 }

@@ -1,6 +1,6 @@
 package com.contrarywind.listener;
 
 
-public interface OnItemSelectedListener {
+public interface OnSimpleItemSelectedListener {
     void onItemSelected(int index);
 }

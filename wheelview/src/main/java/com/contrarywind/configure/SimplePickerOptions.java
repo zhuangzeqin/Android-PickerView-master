@@ -7,13 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-import com.contrarywind.listener.CustomListener;
-import com.contrarywind.listener.OnOptionsSelectChangeListener;
-import com.contrarywind.listener.OnOptionsSelectListener;
-import com.contrarywind.listener.OnTimeSelectChangeListener;
-import com.contrarywind.listener.OnTimeSelectListener;
+import com.contrarywind.listener.SimpleCustomListener;
+import com.contrarywind.listener.OnSimpleOptionsSelectChangeListener;
+import com.contrarywind.listener.OnSimpleOptionsSelectListener;
+import com.contrarywind.listener.OnSimpleTimeSelectChangeListener;
+import com.contrarywind.listener.OnSimpleTimeSelectListener;
 import com.contrarywind.view.R;
-import com.contrarywind.view.WheelView;
+import com.contrarywind.view.SimpleWheelView;
 
 import java.util.Calendar;
 
@@ -22,7 +22,7 @@ import java.util.Calendar;
  * Created by xiaosongzeem on 2018/3/8.
  */
 
-public class PickerOptions {
+public class SimplePickerOptions {
 
     //constant
     private static final int PICKER_VIEW_BTN_COLOR_NORMAL = 0xFF057dff;
@@ -33,13 +33,13 @@ public class PickerOptions {
     public static final int TYPE_PICKER_OPTIONS = 1;
     public static final int TYPE_PICKER_TIME = 2;
 
-    public OnOptionsSelectListener optionsSelectListener;
-    public OnTimeSelectListener timeSelectListener;
+    public OnSimpleOptionsSelectListener optionsSelectListener;
+    public OnSimpleTimeSelectListener timeSelectListener;
     public View.OnClickListener cancelListener;
 
-    public OnTimeSelectChangeListener timeSelectChangeListener;
-    public OnOptionsSelectChangeListener optionsSelectChangeListener;
-    public CustomListener customListener;
+    public OnSimpleTimeSelectChangeListener timeSelectChangeListener;
+    public OnSimpleOptionsSelectChangeListener optionsSelectChangeListener;
+    public SimpleCustomListener customListener;
 
     //options picker
     public String label1, label2, label3;//单位字符
@@ -69,11 +69,11 @@ public class PickerOptions {
     public int x_offset_year, x_offset_month, x_offset_day, x_offset_hours, x_offset_minutes, x_offset_seconds;//单位
 
 
-    public PickerOptions(int buildType) {
+    public SimplePickerOptions(int buildType) {
         if (buildType == TYPE_PICKER_OPTIONS) {
-            layoutRes = R.layout.pickerview_options;
+            layoutRes = R.layout.simple_pickerview_options;
         } else {
-            layoutRes = R.layout.pickerview_time;
+            layoutRes = R.layout.simple_pickerview_time;
         }
     }
 
@@ -109,7 +109,7 @@ public class PickerOptions {
     public boolean cancelable = true;//是否能取消
     public boolean isCenterLabel = false;//是否只显示中间的label,默认每个item都显示
     public Typeface font = Typeface.MONOSPACE;//字体样式
-    public WheelView.DividerType dividerType = WheelView.DividerType.FILL;//分隔线类型
+    public SimpleWheelView.DividerType dividerType = SimpleWheelView.DividerType.FILL;//分隔线类型
     public int itemsVisibleCount = 9; //最大可见条目数
     public boolean isAlphaGradient = false; //透明度渐变
 }

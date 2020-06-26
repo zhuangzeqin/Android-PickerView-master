@@ -4,7 +4,7 @@ package com.contrarywind.adapter;
 /**
  * Numeric Wheel adapter.
  */
-public class NumericWheelAdapter implements WheelAdapter {
+public class SimpleNumericWheelAdapter implements SimpleWheelAdapter {
 	
 	private int minValue;
 	private int maxValue;
@@ -14,7 +14,7 @@ public class NumericWheelAdapter implements WheelAdapter {
 	 * @param minValue the wheel min value
 	 * @param maxValue the wheel max value
 	 */
-	public NumericWheelAdapter(int minValue, int maxValue) {
+	public SimpleNumericWheelAdapter(int minValue, int maxValue) {
 		this.minValue = minValue;
 		this.maxValue = maxValue;
 	}

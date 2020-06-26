@@ -10,7 +10,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
-import com.contrarywind.configure.PickerOptions;
+import com.contrarywind.configure.SimplePickerOptions;
 
 import java.util.List;
 
@@ -18,15 +18,15 @@ import java.util.List;
  * 条件选择器
  * Created by Sai on 15/11/22.
  */
-public class OptionsPickerView<T> extends BasePickerView implements View.OnClickListener {
+public class SimpleOptionsPickerView<T> extends SimpleBasePickerView implements View.OnClickListener {
 
-    private WheelOptions<T> wheelOptions;
+    private SimpleWheelOptions<T> wheelOptions;
 
     private static final String TAG_SUBMIT = "submit";
     private static final String TAG_CANCEL = "cancel";
 
 
-    public OptionsPickerView(PickerOptions pickerOptions) {
+    public SimpleOptionsPickerView(SimplePickerOptions pickerOptions) {
         super(pickerOptions.context);
         mPickerOptions = pickerOptions;
         initView(pickerOptions.context);
@@ -76,7 +76,7 @@ public class OptionsPickerView<T> extends BasePickerView implements View.OnClick
         final LinearLayout optionsPicker = (LinearLayout) findViewById(R.id.optionspicker);
         optionsPicker.setBackgroundColor(mPickerOptions.bgColorWheel);
 
-        wheelOptions = new WheelOptions<>(optionsPicker, mPickerOptions.isRestoreItem);
+        wheelOptions = new SimpleWheelOptions<>(optionsPicker, mPickerOptions.isRestoreItem);
         if (mPickerOptions.optionsSelectChangeListener != null) {
             wheelOptions.setOptionsSelectChangeListener(mPickerOptions.optionsSelectChangeListener);
         }

@@ -1,6 +1,6 @@
 package com.contrarywind.timer;
 
-import com.contrarywind.view.WheelView;
+import com.contrarywind.view.SimpleWheelView;
 
 import java.util.TimerTask;
 
@@ -9,14 +9,14 @@ import java.util.TimerTask;
  *
  * @author 小嵩
  */
-public final class SmoothScrollTimerTask extends TimerTask {
+public final class SimpleSmoothScrollTimerTask extends TimerTask {
 
     private int realTotalOffset;
     private int realOffset;
     private int offset;
-    private final WheelView wheelView;
+    private final SimpleWheelView wheelView;
 
-    public SmoothScrollTimerTask(WheelView wheelView, int offset) {
+    public SimpleSmoothScrollTimerTask(SimpleWheelView wheelView, int offset) {
         this.wheelView = wheelView;
         this.offset = offset;
         realTotalOffset = Integer.MAX_VALUE;
@@ -41,7 +41,7 @@ public final class SmoothScrollTimerTask extends TimerTask {
 
         if (Math.abs(realTotalOffset) <= 1) {
             wheelView.cancelFuture();
-            wheelView.getHandler().sendEmptyMessage(MessageHandler.WHAT_ITEM_SELECTED);
+            wheelView.getHandler().sendEmptyMessage(SimpleMessageHandler.WHAT_ITEM_SELECTED);
         } else {
             wheelView.setTotalScrollY(wheelView.getTotalScrollY() + realOffset);
 
@@ -53,11 +53,11 @@ public final class SmoothScrollTimerTask extends TimerTask {
                 if (wheelView.getTotalScrollY() <= top || wheelView.getTotalScrollY() >= bottom) {
                     wheelView.setTotalScrollY(wheelView.getTotalScrollY() - realOffset);
                     wheelView.cancelFuture();
-                    wheelView.getHandler().sendEmptyMessage(MessageHandler.WHAT_ITEM_SELECTED);
+                    wheelView.getHandler().sendEmptyMessage(SimpleMessageHandler.WHAT_ITEM_SELECTED);
                     return;
                 }
             }
-            wheelView.getHandler().sendEmptyMessage(MessageHandler.WHAT_INVALIDATE_LOOP_VIEW);
+            wheelView.getHandler().sendEmptyMessage(SimpleMessageHandler.WHAT_INVALIDATE_LOOP_VIEW);
             realTotalOffset = realTotalOffset - realOffset;
         }
     }

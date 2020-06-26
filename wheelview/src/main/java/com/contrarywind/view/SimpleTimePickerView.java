@@ -10,8 +10,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
-import com.contrarywind.configure.PickerOptions;
-import com.contrarywind.listener.ISelectTimeCallback;
+import com.contrarywind.configure.SimplePickerOptions;
+import com.contrarywind.listener.ISimpleSelectTimeCallback;
 
 import java.text.ParseException;
 import java.util.Calendar;
@@ -22,13 +22,13 @@ import java.util.Date;
  * Created by Sai on 15/11/22.
  * Updated by XiaoSong on 2017-2-22.
  */
-public class TimePickerView extends BasePickerView implements View.OnClickListener {
+public class SimpleTimePickerView extends SimpleBasePickerView implements View.OnClickListener {
 
-    private WheelTime wheelTime; //自定义控件
+    private SimpleWheelTime wheelTime; //自定义控件
     private static final String TAG_SUBMIT = "submit";
     private static final String TAG_CANCEL = "cancel";
 
-    public TimePickerView(PickerOptions pickerOptions) {
+    public SimpleTimePickerView(SimplePickerOptions pickerOptions) {
         super(pickerOptions.context);
         mPickerOptions = pickerOptions;
         initView(pickerOptions.context);
@@ -40,7 +40,7 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
         initAnim();
 
         if (mPickerOptions.customListener == null) {
-            LayoutInflater.from(context).inflate(R.layout.pickerview_time, contentContainer);
+            LayoutInflater.from(context).inflate(R.layout.simple_pickerview_time, contentContainer);
 
             //顶部标题
             TextView tvTitle = (TextView) findViewById(R.id.tvTitle);
@@ -83,13 +83,13 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
     }
 
     private void initWheelTime(LinearLayout timePickerView) {
-        wheelTime = new WheelTime(timePickerView, mPickerOptions.type, mPickerOptions.textGravity, mPickerOptions.textSizeContent);
+        wheelTime = new SimpleWheelTime(timePickerView, mPickerOptions.type, mPickerOptions.textGravity, mPickerOptions.textSizeContent);
         if (mPickerOptions.timeSelectChangeListener != null) {
-            wheelTime.setSelectChangeCallback(new ISelectTimeCallback() {
+            wheelTime.setSelectChangeCallback(new ISimpleSelectTimeCallback() {
                 @Override
                 public void onTimeSelectChanged() {
                     try {
-                        Date date = WheelTime.dateFormat.parse(wheelTime.getTime());
+                        Date date = SimpleWheelTime.dateFormat.parse(wheelTime.getTime());
                         mPickerOptions.timeSelectChangeListener.onTimeSelectChanged(date);
                     } catch (ParseException e) {
                         e.printStackTrace();
@@ -231,7 +231,7 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
     public void returnData() {
         if (mPickerOptions.timeSelectListener != null) {
             try {
-                Date date = WheelTime.dateFormat.parse(wheelTime.getTime());
+                Date date = SimpleWheelTime.dateFormat.parse(wheelTime.getTime());
                 mPickerOptions.timeSelectListener.onTimeSelect(date, clickView);
             } catch (ParseException e) {
                 e.printStackTrace();
@@ -260,7 +260,7 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
         try {
             int year, month, day, hours, minute, seconds;
             Calendar calendar = Calendar.getInstance();
-            calendar.setTime(WheelTime.dateFormat.parse(wheelTime.getTime()));
+            calendar.setTime(SimpleWheelTime.dateFormat.parse(wheelTime.getTime()));
             year = calendar.get(Calendar.YEAR);
             month = calendar.get(Calendar.MONTH);
             day = calendar.get(Calendar.DAY_OF_MONTH);

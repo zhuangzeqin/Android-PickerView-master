@@ -5,9 +5,9 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
-import com.contrarywind.adapter.ArrayWheelAdapter;
-import com.contrarywind.listener.OnItemSelectedListener;
-import com.contrarywind.view.WheelView;
+import com.contrarywind.adapter.SimpleArrayWheelAdapter;
+import com.contrarywind.listener.OnSimpleItemSelectedListener;
+import com.contrarywind.view.SimpleWheelView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,11 +24,11 @@ public class TestCircleWheelViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_circle_wheelview);
 
-        WheelView wheelView = findViewById(R.id.wheelview);
+        SimpleWheelView wheelView = findViewById(R.id.wheelview);
         wheelView.setTextSize(20);
         wheelView.setLineSpacingMultiplier(2f);
         // wheelView.setDividerWidth(6);
-        wheelView.setDividerType(WheelView.DividerType.CIRCLE);
+        wheelView.setDividerType(SimpleWheelView.DividerType.CIRCLE);
 
         final List<String> mOptionsItems = new ArrayList<>();
         mOptionsItems.add("10");
@@ -39,8 +39,8 @@ public class TestCircleWheelViewActivity extends AppCompatActivity {
         mOptionsItems.add("60");
         mOptionsItems.add("70");
 
-        wheelView.setAdapter(new ArrayWheelAdapter(mOptionsItems));
-        wheelView.setOnItemSelectedListener(new OnItemSelectedListener() {
+        wheelView.setAdapter(new SimpleArrayWheelAdapter(mOptionsItems));
+        wheelView.setOnItemSelectedListener(new OnSimpleItemSelectedListener() {
             @Override
             public void onItemSelected(int index) {
                 Toast.makeText(TestCircleWheelViewActivity.this, "" + mOptionsItems.get(index), Toast.LENGTH_SHORT).show();

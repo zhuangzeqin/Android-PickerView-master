@@ -51,19 +51,19 @@
         android:background="@android:color/white"
         android:orientation="horizontal">
 
-        <com.contrarywind.view.WheelView
+        <com.contrarywind.view.SimpleWheelView
             android:id="@+id/options1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1" />
 
-        <com.contrarywind.view.WheelView
+        <com.contrarywind.view.SimpleWheelView
             android:id="@+id/options2"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1" />
 
-        <com.contrarywind.view.WheelView
+        <com.contrarywind.view.SimpleWheelView
             android:id="@+id/options3"
             android:layout_width="0dp"
             android:layout_height="match_parent"

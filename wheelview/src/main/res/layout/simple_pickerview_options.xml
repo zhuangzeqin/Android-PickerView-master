@@ -5,7 +5,7 @@
     android:orientation="vertical">
 
     <include
-        layout="@layout/include_pickerview_topbar"
+        layout="@layout/simple_include_pickerview_topbar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/pickerview_topbar_height" />
 
@@ -18,19 +18,19 @@
         android:minHeight="180dp"
         android:orientation="horizontal">
 
-        <com.contrarywind.view.WheelView
+        <com.contrarywind.view.SimpleWheelView
             android:id="@+id/options1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1" />
 
-        <com.contrarywind.view.WheelView
+        <com.contrarywind.view.SimpleWheelView
             android:id="@+id/options2"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1" />
 
-        <com.contrarywind.view.WheelView
+        <com.contrarywind.view.SimpleWheelView
             android:id="@+id/options3"
             android:layout_width="0dp"
             android:layout_height="match_parent"

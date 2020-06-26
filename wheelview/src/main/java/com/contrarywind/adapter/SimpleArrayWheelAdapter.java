@@ -6,7 +6,7 @@ import java.util.List;
  * The simple Array wheel adapter
  * @param <T> the element type
  */
-public class ArrayWheelAdapter<T> implements WheelAdapter {
+public class SimpleArrayWheelAdapter<T> implements SimpleWheelAdapter {
 	
 
 	// items
@@ -16,7 +16,7 @@ public class ArrayWheelAdapter<T> implements WheelAdapter {
 	 * Constructor
 	 * @param items the items
 	 */
-	public ArrayWheelAdapter(List<T> items) {
+	public SimpleArrayWheelAdapter(List<T> items) {
 		this.items = items;
 
 	}

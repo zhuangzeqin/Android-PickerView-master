@@ -1,12 +1,12 @@
 package com.bigkoo.pickerviewdemo.bean;
 
 
-import com.contrarywind.interfaces.IPickerViewData;
+import com.contrarywind.interfaces.ISimplePickerViewData;
 
 /**
  * Created by Sai on 15/11/22.
  */
-public class ProvinceBean implements IPickerViewData {
+public class ProvinceBean implements ISimplePickerViewData {
     private long id;
     private String name;
     private String description;

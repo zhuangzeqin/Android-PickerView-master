@@ -1,7 +1,7 @@
 package com.contrarywind.adapter;
 
 
-public interface WheelAdapter<T> {
+public interface SimpleWheelAdapter<T> {
 	/**
 	 * Gets items count
 	 * @return the count of wheel items

@@ -16,13 +16,13 @@ import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.contrarywind.adapter.WheelAdapter;
-import com.contrarywind.interfaces.IPickerViewData;
-import com.contrarywind.listener.LoopViewGestureListener;
-import com.contrarywind.listener.OnItemSelectedListener;
-import com.contrarywind.timer.InertiaTimerTask;
-import com.contrarywind.timer.MessageHandler;
-import com.contrarywind.timer.SmoothScrollTimerTask;
+import com.contrarywind.adapter.SimpleWheelAdapter;
+import com.contrarywind.interfaces.ISimplePickerViewData;
+import com.contrarywind.listener.SimpleLoopViewGestureListener;
+import com.contrarywind.listener.OnSimpleItemSelectedListener;
+import com.contrarywind.timer.SimpleInertiaTimerTask;
+import com.contrarywind.timer.SimpleMessageHandler;
+import com.contrarywind.timer.SimpleSmoothScrollTimerTask;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -32,7 +32,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * 3d滚轮控件
  */
-public class WheelView extends View {
+public class SimpleWheelView extends View {
 
     public enum ACTION { // 点击，滑翔(滑到尽头)，拖拽事件
         CLICK, FLING, DAGGLE
@@ -49,7 +49,7 @@ public class WheelView extends View {
     private Context context;
     private Handler handler;
     private GestureDetector gestureDetector;
-    private OnItemSelectedListener onItemSelectedListener;
+    private OnSimpleItemSelectedListener onItemSelectedListener;
 
     private boolean isOptions = false;
     private boolean isCenterLabel = true;
@@ -62,7 +62,7 @@ public class WheelView extends View {
     private Paint paintCenterText;
     private Paint paintIndicator;
 
-    private WheelAdapter adapter;
+    private SimpleWheelAdapter adapter;
 
     private String label;//附加单位
     private int textSize;//选项的文字大小
@@ -124,11 +124,11 @@ public class WheelView extends View {
 
     private boolean isAlphaGradient = false; //透明度渐变
 
-    public WheelView(Context context) {
+    public SimpleWheelView(Context context) {
         this(context, null);
     }
 
-    public WheelView(Context context, AttributeSet attrs) {
+    public SimpleWheelView(Context context, AttributeSet attrs) {
         super(context, attrs);
 
         textSize = getResources().getDimensionPixelSize(R.dimen.pickerview_textsize);//默认大小
@@ -175,8 +175,8 @@ public class WheelView extends View {
 
     private void initLoopView(Context context) {
         this.context = context;
-        handler = new MessageHandler(this);
-        gestureDetector = new GestureDetector(context, new LoopViewGestureListener(this));
+        handler = new SimpleMessageHandler(this);
+        gestureDetector = new GestureDetector(context, new SimpleLoopViewGestureListener(this));
         gestureDetector.setIsLongpressEnabled(false);
         isLoop = true;
 
@@ -267,12 +267,12 @@ public class WheelView extends View {
             }
         }
         //停止的时候，位置有偏移，不是全部都能正确停止到中间位置的，这里把文字位置挪回中间去
-        mFuture = mExecutor.scheduleWithFixedDelay(new SmoothScrollTimerTask(this, mOffset), 0, 10, TimeUnit.MILLISECONDS);
+        mFuture = mExecutor.scheduleWithFixedDelay(new SimpleSmoothScrollTimerTask(this, mOffset), 0, 10, TimeUnit.MILLISECONDS);
     }
 
     public final void scrollBy(float velocityY) {//滚动惯性的实现
         cancelFuture();
-        mFuture = mExecutor.scheduleWithFixedDelay(new InertiaTimerTask(this, velocityY), 0, VELOCITY_FLING, TimeUnit.MILLISECONDS);
+        mFuture = mExecutor.scheduleWithFixedDelay(new SimpleInertiaTimerTask(this, velocityY), 0, VELOCITY_FLING, TimeUnit.MILLISECONDS);
     }
 
     public void cancelFuture() {
@@ -313,11 +313,11 @@ public class WheelView extends View {
         invalidate();
     }
 
-    public final void setOnItemSelectedListener(OnItemSelectedListener OnItemSelectedListener) {
+    public final void setOnItemSelectedListener(OnSimpleItemSelectedListener OnItemSelectedListener) {
         this.onItemSelectedListener = OnItemSelectedListener;
     }
 
-    public final void setAdapter(WheelAdapter adapter) {
+    public final void setAdapter(SimpleWheelAdapter adapter) {
         this.adapter = adapter;
         reMeasure();
         invalidate();
@@ -334,7 +334,7 @@ public class WheelView extends View {
         isAlphaGradient = alphaGradient;
     }
 
-    public final WheelAdapter getAdapter() {
+    public final SimpleWheelAdapter getAdapter() {
         return adapter;
     }
 
@@ -607,8 +607,8 @@ public class WheelView extends View {
     private String getContentText(Object item) {
         if (item == null) {
             return "";
-        } else if (item instanceof IPickerViewData) {
-            return ((IPickerViewData) item).getPickerViewText();
+        } else if (item instanceof ISimplePickerViewData) {
+            return ((ISimplePickerViewData) item).getPickerViewText();
         } else if (item instanceof Integer) {
             //如果为整形则最少保留两位数.
             return getFixNum((int) item);

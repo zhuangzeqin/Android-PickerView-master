@@ -52,38 +52,38 @@
         android:gravity="center"
         android:orientation="horizontal">
 
-        <com.contrarywind.view.WheelView
+        <com.contrarywind.view.SimpleWheelView
             android:id="@+id/year"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1" />
 
-        <com.contrarywind.view.WheelView
+        <com.contrarywind.view.SimpleWheelView
 
             android:id="@+id/month"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1.1" />
 
-        <com.contrarywind.view.WheelView
+        <com.contrarywind.view.SimpleWheelView
             android:id="@+id/day"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1.1" />
 
-        <com.contrarywind.view.WheelView
+        <com.contrarywind.view.SimpleWheelView
             android:id="@+id/hour"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1.1" />
 
-        <com.contrarywind.view.WheelView
+        <com.contrarywind.view.SimpleWheelView
             android:id="@+id/min"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1.1" />
 
-        <com.contrarywind.view.WheelView
+        <com.contrarywind.view.SimpleWheelView
             android:id="@+id/second"
             android:layout_width="0dp"
             android:layout_height="match_parent"

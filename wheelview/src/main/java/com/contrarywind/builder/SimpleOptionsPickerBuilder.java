@@ -6,63 +6,63 @@ import android.support.annotation.ColorInt;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.contrarywind.configure.PickerOptions;
-import com.contrarywind.listener.CustomListener;
-import com.contrarywind.listener.OnOptionsSelectChangeListener;
-import com.contrarywind.listener.OnOptionsSelectListener;
-import com.contrarywind.view.OptionsPickerView;
-import com.contrarywind.view.WheelView;
+import com.contrarywind.configure.SimplePickerOptions;
+import com.contrarywind.listener.SimpleCustomListener;
+import com.contrarywind.listener.OnSimpleOptionsSelectChangeListener;
+import com.contrarywind.listener.OnSimpleOptionsSelectListener;
+import com.contrarywind.view.SimpleOptionsPickerView;
+import com.contrarywind.view.SimpleWheelView;
 
 /**
  * Created by xiaosongzeem on 2018/3/20.
  */
 
-public class OptionsPickerBuilder {
+public class SimpleOptionsPickerBuilder {
 
     //配置类
-    private PickerOptions mPickerOptions;
+    private SimplePickerOptions mPickerOptions;
 
 
     //Required
-    public OptionsPickerBuilder(Context context, OnOptionsSelectListener listener) {
-        mPickerOptions = new PickerOptions(PickerOptions.TYPE_PICKER_OPTIONS);
+    public SimpleOptionsPickerBuilder(Context context, OnSimpleOptionsSelectListener listener) {
+        mPickerOptions = new SimplePickerOptions(SimplePickerOptions.TYPE_PICKER_OPTIONS);
         mPickerOptions.context = context;
         mPickerOptions.optionsSelectListener = listener;
     }
 
     //Option
-    public OptionsPickerBuilder setSubmitText(String textContentConfirm) {
+    public SimpleOptionsPickerBuilder setSubmitText(String textContentConfirm) {
         mPickerOptions.textContentConfirm = textContentConfirm;
         return this;
     }
 
-    public OptionsPickerBuilder setCancelText(String textContentCancel) {
+    public SimpleOptionsPickerBuilder setCancelText(String textContentCancel) {
         mPickerOptions.textContentCancel = textContentCancel;
         return this;
     }
 
-    public OptionsPickerBuilder setTitleText(String textContentTitle) {
+    public SimpleOptionsPickerBuilder setTitleText(String textContentTitle) {
         mPickerOptions.textContentTitle = textContentTitle;
         return this;
     }
 
-    public OptionsPickerBuilder isDialog(boolean isDialog) {
+    public SimpleOptionsPickerBuilder isDialog(boolean isDialog) {
         mPickerOptions.isDialog = isDialog;
         return this;
     }
 
-    public OptionsPickerBuilder addOnCancelClickListener(View.OnClickListener cancelListener) {
+    public SimpleOptionsPickerBuilder addOnCancelClickListener(View.OnClickListener cancelListener) {
         mPickerOptions.cancelListener = cancelListener;
         return this;
     }
 
 
-    public OptionsPickerBuilder setSubmitColor(int textColorConfirm) {
+    public SimpleOptionsPickerBuilder setSubmitColor(int textColorConfirm) {
         mPickerOptions.textColorConfirm = textColorConfirm;
         return this;
     }
 
-    public OptionsPickerBuilder setCancelColor(int textColorCancel) {
+    public SimpleOptionsPickerBuilder setCancelColor(int textColorCancel) {
         mPickerOptions.textColorCancel = textColorCancel;
         return this;
     }
@@ -74,7 +74,7 @@ public class OptionsPickerBuilder {
      * @param backgroundId color resId.
      */
     @Deprecated
-    public OptionsPickerBuilder setBackgroundId(int backgroundId) {
+    public SimpleOptionsPickerBuilder setBackgroundId(int backgroundId) {
         mPickerOptions.outSideColor = backgroundId;
         return this;
     }
@@ -85,7 +85,7 @@ public class OptionsPickerBuilder {
      * @param outSideColor color resId.
      * @return
      */
-    public OptionsPickerBuilder setOutSideColor(int outSideColor) {
+    public SimpleOptionsPickerBuilder setOutSideColor(int outSideColor) {
         mPickerOptions.outSideColor = outSideColor;
         return this;
     }
@@ -97,54 +97,54 @@ public class OptionsPickerBuilder {
      * @param decorView Parent View.
      * @return
      */
-    public OptionsPickerBuilder setDecorView(ViewGroup decorView) {
+    public SimpleOptionsPickerBuilder setDecorView(ViewGroup decorView) {
         mPickerOptions.decorView = decorView;
         return this;
     }
 
-    public OptionsPickerBuilder setLayoutRes(int res, CustomListener listener) {
+    public SimpleOptionsPickerBuilder setLayoutRes(int res, SimpleCustomListener listener) {
         mPickerOptions.layoutRes = res;
         mPickerOptions.customListener = listener;
         return this;
     }
 
-    public OptionsPickerBuilder setBgColor(int bgColorWheel) {
+    public SimpleOptionsPickerBuilder setBgColor(int bgColorWheel) {
         mPickerOptions.bgColorWheel = bgColorWheel;
         return this;
     }
 
-    public OptionsPickerBuilder setTitleBgColor(int bgColorTitle) {
+    public SimpleOptionsPickerBuilder setTitleBgColor(int bgColorTitle) {
         mPickerOptions.bgColorTitle = bgColorTitle;
         return this;
     }
 
-    public OptionsPickerBuilder setTitleColor(int textColorTitle) {
+    public SimpleOptionsPickerBuilder setTitleColor(int textColorTitle) {
         mPickerOptions.textColorTitle = textColorTitle;
         return this;
     }
 
-    public OptionsPickerBuilder setSubCalSize(int textSizeSubmitCancel) {
+    public SimpleOptionsPickerBuilder setSubCalSize(int textSizeSubmitCancel) {
         mPickerOptions.textSizeSubmitCancel = textSizeSubmitCancel;
         return this;
     }
 
-    public OptionsPickerBuilder setTitleSize(int textSizeTitle) {
+    public SimpleOptionsPickerBuilder setTitleSize(int textSizeTitle) {
         mPickerOptions.textSizeTitle = textSizeTitle;
         return this;
     }
 
-    public OptionsPickerBuilder setContentTextSize(int textSizeContent) {
+    public SimpleOptionsPickerBuilder setContentTextSize(int textSizeContent) {
         mPickerOptions.textSizeContent = textSizeContent;
         return this;
     }
 
-    public OptionsPickerBuilder setOutSideCancelable(boolean cancelable) {
+    public SimpleOptionsPickerBuilder setOutSideCancelable(boolean cancelable) {
         mPickerOptions.cancelable = cancelable;
         return this;
     }
 
 
-    public OptionsPickerBuilder setLabels(String label1, String label2, String label3) {
+    public SimpleOptionsPickerBuilder setLabels(String label1, String label2, String label3) {
         mPickerOptions.label1 = label1;
         mPickerOptions.label2 = label2;
         mPickerOptions.label3 = label3;
@@ -156,7 +156,7 @@ public class OptionsPickerBuilder {
      *
      * @param lineSpacingMultiplier 浮点型，1.0-4.0f 之间有效,超过则取极值。
      */
-    public OptionsPickerBuilder setLineSpacingMultiplier(float lineSpacingMultiplier) {
+    public SimpleOptionsPickerBuilder setLineSpacingMultiplier(float lineSpacingMultiplier) {
         mPickerOptions.lineSpacingMultiplier = lineSpacingMultiplier;
         return this;
     }
@@ -166,7 +166,7 @@ public class OptionsPickerBuilder {
      *
      * @param dividerColor color resId.
      */
-    public OptionsPickerBuilder setDividerColor(@ColorInt int dividerColor) {
+    public SimpleOptionsPickerBuilder setDividerColor(@ColorInt int dividerColor) {
         mPickerOptions.dividerColor = dividerColor;
         return this;
     }
@@ -174,9 +174,9 @@ public class OptionsPickerBuilder {
     /**
      * Set item divider line type.
      *
-     * @param dividerType enum Type {@link WheelView.DividerType}
+     * @param dividerType enum Type {@link SimpleWheelView.DividerType}
      */
-    public OptionsPickerBuilder setDividerType(WheelView.DividerType dividerType) {
+    public SimpleOptionsPickerBuilder setDividerType(SimpleWheelView.DividerType dividerType) {
         mPickerOptions.dividerType = dividerType;
         return this;
     }
@@ -186,7 +186,7 @@ public class OptionsPickerBuilder {
      *
      * @param textColorCenter color res.
      */
-    public OptionsPickerBuilder setTextColorCenter(int textColorCenter) {
+    public SimpleOptionsPickerBuilder setTextColorCenter(int textColorCenter) {
         mPickerOptions.textColorCenter = textColorCenter;
         return this;
     }
@@ -196,49 +196,49 @@ public class OptionsPickerBuilder {
      *
      * @param textColorOut color resId.
      */
-    public OptionsPickerBuilder setTextColorOut(@ColorInt int textColorOut) {
+    public SimpleOptionsPickerBuilder setTextColorOut(@ColorInt int textColorOut) {
         mPickerOptions.textColorOut = textColorOut;
         return this;
     }
 
-    public OptionsPickerBuilder setTypeface(Typeface font) {
+    public SimpleOptionsPickerBuilder setTypeface(Typeface font) {
         mPickerOptions.font = font;
         return this;
     }
 
-    public OptionsPickerBuilder setCyclic(boolean cyclic1, boolean cyclic2, boolean cyclic3) {
+    public SimpleOptionsPickerBuilder setCyclic(boolean cyclic1, boolean cyclic2, boolean cyclic3) {
         mPickerOptions.cyclic1 = cyclic1;
         mPickerOptions.cyclic2 = cyclic2;
         mPickerOptions.cyclic3 = cyclic3;
         return this;
     }
 
-    public OptionsPickerBuilder setSelectOptions(int option1) {
+    public SimpleOptionsPickerBuilder setSelectOptions(int option1) {
         mPickerOptions.option1 = option1;
         return this;
     }
 
-    public OptionsPickerBuilder setSelectOptions(int option1, int option2) {
+    public SimpleOptionsPickerBuilder setSelectOptions(int option1, int option2) {
         mPickerOptions.option1 = option1;
         mPickerOptions.option2 = option2;
         return this;
     }
 
-    public OptionsPickerBuilder setSelectOptions(int option1, int option2, int option3) {
+    public SimpleOptionsPickerBuilder setSelectOptions(int option1, int option2, int option3) {
         mPickerOptions.option1 = option1;
         mPickerOptions.option2 = option2;
         mPickerOptions.option3 = option3;
         return this;
     }
 
-    public OptionsPickerBuilder setTextXOffset(int xoffset_one, int xoffset_two, int xoffset_three) {
+    public SimpleOptionsPickerBuilder setTextXOffset(int xoffset_one, int xoffset_two, int xoffset_three) {
         mPickerOptions.x_offset_one = xoffset_one;
         mPickerOptions.x_offset_two = xoffset_two;
         mPickerOptions.x_offset_three = xoffset_three;
         return this;
     }
 
-    public OptionsPickerBuilder isCenterLabel(boolean isCenterLabel) {
+    public SimpleOptionsPickerBuilder isCenterLabel(boolean isCenterLabel) {
         mPickerOptions.isCenterLabel = isCenterLabel;
         return this;
     }
@@ -249,7 +249,7 @@ public class OptionsPickerBuilder {
      *
      * @param count 建议设置为 3 ~ 9之间。
      */
-    public OptionsPickerBuilder setItemVisibleCount(int count) {
+    public SimpleOptionsPickerBuilder setItemVisibleCount(int count) {
         mPickerOptions.itemsVisibleCount = count;
         return this;
     }
@@ -259,7 +259,7 @@ public class OptionsPickerBuilder {
      *
      * @param isAlphaGradient true of false
      */
-    public OptionsPickerBuilder isAlphaGradient(boolean isAlphaGradient) {
+    public SimpleOptionsPickerBuilder isAlphaGradient(boolean isAlphaGradient) {
         mPickerOptions.isAlphaGradient = isAlphaGradient;
         return this;
     }
@@ -270,7 +270,7 @@ public class OptionsPickerBuilder {
      * @param isRestoreItem true：还原； false: 保持上一个选项
      * @return TimePickerBuilder
      */
-    public OptionsPickerBuilder isRestoreItem(boolean isRestoreItem) {
+    public SimpleOptionsPickerBuilder isRestoreItem(boolean isRestoreItem) {
         mPickerOptions.isRestoreItem = isRestoreItem;
         return this;
     }
@@ -279,13 +279,13 @@ public class OptionsPickerBuilder {
      * @param listener 切换item项滚动停止时，实时回调监听。
      * @return
      */
-    public OptionsPickerBuilder setOptionsSelectChangeListener(OnOptionsSelectChangeListener listener) {
+    public SimpleOptionsPickerBuilder setOptionsSelectChangeListener(OnSimpleOptionsSelectChangeListener listener) {
         mPickerOptions.optionsSelectChangeListener = listener;
         return this;
     }
 
 
-    public <T> OptionsPickerView<T> build() {
-        return new OptionsPickerView<>(mPickerOptions);
+    public <T> SimpleOptionsPickerView<T> build() {
+        return new SimpleOptionsPickerView<>(mPickerOptions);
     }
 }

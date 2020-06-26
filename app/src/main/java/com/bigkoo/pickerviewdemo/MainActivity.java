@@ -22,15 +22,15 @@ import android.widget.Toast;
 
 import com.bigkoo.pickerviewdemo.bean.CardBean;
 import com.bigkoo.pickerviewdemo.bean.ProvinceBean;
-import com.contrarywind.builder.OptionsPickerBuilder;
-import com.contrarywind.builder.TimePickerBuilder;
-import com.contrarywind.listener.CustomListener;
-import com.contrarywind.listener.OnOptionsSelectChangeListener;
-import com.contrarywind.listener.OnOptionsSelectListener;
-import com.contrarywind.listener.OnTimeSelectChangeListener;
-import com.contrarywind.listener.OnTimeSelectListener;
-import com.contrarywind.view.OptionsPickerView;
-import com.contrarywind.view.TimePickerView;
+import com.contrarywind.builder.SimpleOptionsPickerBuilder;
+import com.contrarywind.builder.SimpleTimePickerBuilder;
+import com.contrarywind.listener.SimpleCustomListener;
+import com.contrarywind.listener.OnSimpleOptionsSelectChangeListener;
+import com.contrarywind.listener.OnSimpleOptionsSelectListener;
+import com.contrarywind.listener.OnSimpleTimeSelectChangeListener;
+import com.contrarywind.listener.OnSimpleTimeSelectListener;
+import com.contrarywind.view.SimpleOptionsPickerView;
+import com.contrarywind.view.SimpleTimePickerView;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -47,8 +47,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button btn_CustomOptions;
     private Button btn_CustomTime;
 
-    private TimePickerView pvTime, pvCustomTime, pvCustomLunar;
-    private OptionsPickerView pvOptions, pvCustomOptions, pvNoLinkOptions;
+    private SimpleTimePickerView pvTime, pvCustomTime, pvCustomLunar;
+    private SimpleOptionsPickerView pvOptions, pvCustomOptions, pvNoLinkOptions;
     private ArrayList<CardBean> cardItem = new ArrayList<>();
 
     private ArrayList<String> food = new ArrayList<>();
@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Calendar endDate = Calendar.getInstance();
         endDate.set(2069, 2, 28);
         //时间选择器 ，自定义布局
-        pvCustomLunar = new TimePickerBuilder(this, new OnTimeSelectListener() {
+        pvCustomLunar = new SimpleTimePickerBuilder(this, new OnSimpleTimeSelectListener() {
             @Override
             public void onTimeSelect(Date date, View v) {//选中事件回调
                 Toast.makeText(MainActivity.this, getTime(date), Toast.LENGTH_SHORT).show();
@@ -135,7 +135,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         })
                 .setDate(selectedDate)
                 .setRangDate(startDate, endDate)
-                .setLayoutRes(R.layout.pickerview_custom_lunar, new CustomListener() {
+                .setLayoutRes(R.layout.pickerview_custom_lunar, new SimpleCustomListener() {
 
                     @Override
                     public void customLayout(final View v) {
@@ -195,7 +195,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     private void initTimePicker() {//Dialog 模式下，在底部弹出
-        pvTime = new TimePickerBuilder(this, new OnTimeSelectListener() {
+        pvTime = new SimpleTimePickerBuilder(this, new OnSimpleTimeSelectListener() {
             @Override
             public void onTimeSelect(Date date, View v) {
                 Toast.makeText(MainActivity.this, getTime(date), Toast.LENGTH_SHORT).show();
@@ -203,7 +203,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             }
         })
-                .setTimeSelectChangeListener(new OnTimeSelectChangeListener() {
+                .setTimeSelectChangeListener(new OnSimpleTimeSelectChangeListener() {
                     @Override
                     public void onTimeSelectChanged(Date date) {
                         Log.i("pvTime", "onTimeSelectChanged");
@@ -259,7 +259,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Calendar endDate = Calendar.getInstance();
         endDate.set(2027, 2, 28);
         //时间选择器 ，自定义布局
-        pvCustomTime = new TimePickerBuilder(this, new OnTimeSelectListener() {
+        pvCustomTime = new SimpleTimePickerBuilder(this, new OnSimpleTimeSelectListener() {
             @Override
             public void onTimeSelect(Date date, View v) {//选中事件回调
                 btn_CustomTime.setText(getTime(date));
@@ -282,7 +282,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 /*.animGravity(Gravity.RIGHT)// default is center*/
                 .setDate(selectedDate)
                 .setRangDate(startDate, endDate)
-                .setLayoutRes(R.layout.pickerview_custom_time, new CustomListener() {
+                .setLayoutRes(R.layout.pickerview_custom_time, new SimpleCustomListener() {
 
                     @Override
                     public void customLayout(View v) {
@@ -319,7 +319,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
          * 注意 ：如果是三级联动的数据(省市区等)，请参照 JsonDataActivity 类里面的写法。
          */
 
-        pvOptions = new OptionsPickerBuilder(this, new OnOptionsSelectListener() {
+        pvOptions = new SimpleOptionsPickerBuilder(this, new OnSimpleOptionsSelectListener() {
             @Override
             public void onOptionsSelect(int options1, int options2, int options3, View v) {
                 //返回的分别是三个级别的选中位置
@@ -343,7 +343,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .isCenterLabel(false) //是否只显示中间选中项的label文字，false则每项item全部都带有label。
                 .setLabels("省", "市", "区")
                 .setOutSideColor(0x00000000) //设置外部遮罩颜色
-                .setOptionsSelectChangeListener(new OnOptionsSelectChangeListener() {
+                .setOptionsSelectChangeListener(new OnSimpleOptionsSelectChangeListener() {
                     @Override
                     public void onOptionsSelectChanged(int options1, int options2, int options3) {
                         String str = "options1: " + options1 + "\noptions2: " + options2 + "\noptions3: " + options3;
@@ -366,7 +366,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
          * 自定义布局中，id为 optionspicker 或者 timepicker 的布局以及其子控件必须要有，否则会报空指针。
          * 具体可参考demo 里面的两个自定义layout布局。
          */
-        pvCustomOptions = new OptionsPickerBuilder(this, new OnOptionsSelectListener() {
+        pvCustomOptions = new SimpleOptionsPickerBuilder(this, new OnSimpleOptionsSelectListener() {
             @Override
             public void onOptionsSelect(int options1, int option2, int options3, View v) {
                 //返回的分别是三个级别的选中位置
@@ -374,7 +374,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 btn_CustomOptions.setText(tx);
             }
         })
-                .setLayoutRes(R.layout.pickerview_custom_options, new CustomListener() {
+                .setLayoutRes(R.layout.pickerview_custom_options, new SimpleCustomListener() {
                     @Override
                     public void customLayout(View v) {
                         final TextView tvSubmit = (TextView) v.findViewById(R.id.tv_finish);
@@ -415,7 +415,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initNoLinkOptionsPicker() {// 不联动的多级选项
-        pvNoLinkOptions = new OptionsPickerBuilder(this, new OnOptionsSelectListener() {
+        pvNoLinkOptions = new SimpleOptionsPickerBuilder(this, new OnSimpleOptionsSelectListener() {
 
             @Override
             public void onOptionsSelect(int options1, int options2, int options3, View v) {
@@ -427,7 +427,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Toast.makeText(MainActivity.this, str, Toast.LENGTH_SHORT).show();
             }
         })
-                .setOptionsSelectChangeListener(new OnOptionsSelectChangeListener() {
+                .setOptionsSelectChangeListener(new OnSimpleOptionsSelectChangeListener() {
                     @Override
                     public void onOptionsSelectChanged(int options1, int options2, int options3) {
                         String str = "options1: " + options1 + "\noptions2: " + options2 + "\noptions3: " + options3;

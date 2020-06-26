@@ -5,12 +5,12 @@ import android.support.annotation.ColorInt;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.contrarywind.configure.PickerOptions;
-import com.contrarywind.listener.CustomListener;
-import com.contrarywind.listener.OnTimeSelectChangeListener;
-import com.contrarywind.listener.OnTimeSelectListener;
-import com.contrarywind.view.TimePickerView;
-import com.contrarywind.view.WheelView;
+import com.contrarywind.configure.SimplePickerOptions;
+import com.contrarywind.listener.SimpleCustomListener;
+import com.contrarywind.listener.OnSimpleTimeSelectChangeListener;
+import com.contrarywind.listener.OnSimpleTimeSelectListener;
+import com.contrarywind.view.SimpleTimePickerView;
+import com.contrarywind.view.SimpleWheelView;
 
 import java.util.Calendar;
 
@@ -18,24 +18,24 @@ import java.util.Calendar;
  * Created by xiaosongzeem on 2018/3/20.
  */
 
-public class TimePickerBuilder {
+public class SimpleTimePickerBuilder {
 
-    private PickerOptions mPickerOptions;
+    private SimplePickerOptions mPickerOptions;
 
     //Required
-    public TimePickerBuilder(Context context, OnTimeSelectListener listener) {
-        mPickerOptions = new PickerOptions(PickerOptions.TYPE_PICKER_TIME);
+    public SimpleTimePickerBuilder(Context context, OnSimpleTimeSelectListener listener) {
+        mPickerOptions = new SimplePickerOptions(SimplePickerOptions.TYPE_PICKER_TIME);
         mPickerOptions.context = context;
         mPickerOptions.timeSelectListener = listener;
     }
 
     //Option
-    public TimePickerBuilder setGravity(int gravity) {
+    public SimpleTimePickerBuilder setGravity(int gravity) {
         mPickerOptions.textGravity = gravity;
         return this;
     }
 
-    public TimePickerBuilder addOnCancelClickListener(View.OnClickListener cancelListener) {
+    public SimpleTimePickerBuilder addOnCancelClickListener(View.OnClickListener cancelListener) {
         mPickerOptions.cancelListener = cancelListener;
         return this;
     }
@@ -48,37 +48,37 @@ public class TimePickerBuilder {
      * @param type 布尔型数组，长度需要设置为6。
      * @return TimePickerBuilder
      */
-    public TimePickerBuilder setType(boolean[] type) {
+    public SimpleTimePickerBuilder setType(boolean[] type) {
         mPickerOptions.type = type;
         return this;
     }
 
-    public TimePickerBuilder setSubmitText(String textContentConfirm) {
+    public SimpleTimePickerBuilder setSubmitText(String textContentConfirm) {
         mPickerOptions.textContentConfirm = textContentConfirm;
         return this;
     }
 
-    public TimePickerBuilder isDialog(boolean isDialog) {
+    public SimpleTimePickerBuilder isDialog(boolean isDialog) {
         mPickerOptions.isDialog = isDialog;
         return this;
     }
 
-    public TimePickerBuilder setCancelText(String textContentCancel) {
+    public SimpleTimePickerBuilder setCancelText(String textContentCancel) {
         mPickerOptions.textContentCancel = textContentCancel;
         return this;
     }
 
-    public TimePickerBuilder setTitleText(String textContentTitle) {
+    public SimpleTimePickerBuilder setTitleText(String textContentTitle) {
         mPickerOptions.textContentTitle = textContentTitle;
         return this;
     }
 
-    public TimePickerBuilder setSubmitColor(int textColorConfirm) {
+    public SimpleTimePickerBuilder setSubmitColor(int textColorConfirm) {
         mPickerOptions.textColorConfirm = textColorConfirm;
         return this;
     }
 
-    public TimePickerBuilder setCancelColor(int textColorCancel) {
+    public SimpleTimePickerBuilder setCancelColor(int textColorCancel) {
         mPickerOptions.textColorCancel = textColorCancel;
         return this;
     }
@@ -89,37 +89,37 @@ public class TimePickerBuilder {
      * @param decorView 选择器会被添加到此容器中
      * @return TimePickerBuilder
      */
-    public TimePickerBuilder setDecorView(ViewGroup decorView) {
+    public SimpleTimePickerBuilder setDecorView(ViewGroup decorView) {
         mPickerOptions.decorView = decorView;
         return this;
     }
 
-    public TimePickerBuilder setBgColor(int bgColorWheel) {
+    public SimpleTimePickerBuilder setBgColor(int bgColorWheel) {
         mPickerOptions.bgColorWheel = bgColorWheel;
         return this;
     }
 
-    public TimePickerBuilder setTitleBgColor(int bgColorTitle) {
+    public SimpleTimePickerBuilder setTitleBgColor(int bgColorTitle) {
         mPickerOptions.bgColorTitle = bgColorTitle;
         return this;
     }
 
-    public TimePickerBuilder setTitleColor(int textColorTitle) {
+    public SimpleTimePickerBuilder setTitleColor(int textColorTitle) {
         mPickerOptions.textColorTitle = textColorTitle;
         return this;
     }
 
-    public TimePickerBuilder setSubCalSize(int textSizeSubmitCancel) {
+    public SimpleTimePickerBuilder setSubCalSize(int textSizeSubmitCancel) {
         mPickerOptions.textSizeSubmitCancel = textSizeSubmitCancel;
         return this;
     }
 
-    public TimePickerBuilder setTitleSize(int textSizeTitle) {
+    public SimpleTimePickerBuilder setTitleSize(int textSizeTitle) {
         mPickerOptions.textSizeTitle = textSizeTitle;
         return this;
     }
 
-    public TimePickerBuilder setContentTextSize(int textSizeContent) {
+    public SimpleTimePickerBuilder setContentTextSize(int textSizeContent) {
         mPickerOptions.textSizeContent = textSizeContent;
         return this;
     }
@@ -129,7 +129,7 @@ public class TimePickerBuilder {
      *
      * @param count suggest value: 3, 5, 7, 9
      */
-    public TimePickerBuilder setItemVisibleCount(int count) {
+    public SimpleTimePickerBuilder setItemVisibleCount(int count) {
         mPickerOptions.itemsVisibleCount = count;
         return this;
     }
@@ -139,7 +139,7 @@ public class TimePickerBuilder {
      *
      * @param isAlphaGradient true of false
      */
-    public TimePickerBuilder isAlphaGradient(boolean isAlphaGradient) {
+    public SimpleTimePickerBuilder isAlphaGradient(boolean isAlphaGradient) {
         mPickerOptions.isAlphaGradient = isAlphaGradient;
         return this;
     }
@@ -150,12 +150,12 @@ public class TimePickerBuilder {
      * @param date
      * @return TimePickerBuilder
      */
-    public TimePickerBuilder setDate(Calendar date) {
+    public SimpleTimePickerBuilder setDate(Calendar date) {
         mPickerOptions.date = date;
         return this;
     }
 
-    public TimePickerBuilder setLayoutRes(int res, CustomListener customListener) {
+    public SimpleTimePickerBuilder setLayoutRes(int res, SimpleCustomListener customListener) {
         mPickerOptions.layoutRes = res;
         mPickerOptions.customListener = customListener;
         return this;
@@ -167,7 +167,7 @@ public class TimePickerBuilder {
      * 因为系统Calendar的月份是从0-11的,所以如果是调用Calendar的set方法来设置时间,月份的范围也要是从0-11
      */
 
-    public TimePickerBuilder setRangDate(Calendar startDate, Calendar endDate) {
+    public SimpleTimePickerBuilder setRangDate(Calendar startDate, Calendar endDate) {
         mPickerOptions.startDate = startDate;
         mPickerOptions.endDate = endDate;
         return this;
@@ -179,7 +179,7 @@ public class TimePickerBuilder {
      *
      * @param lineSpacingMultiplier
      */
-    public TimePickerBuilder setLineSpacingMultiplier(float lineSpacingMultiplier) {
+    public SimpleTimePickerBuilder setLineSpacingMultiplier(float lineSpacingMultiplier) {
         mPickerOptions.lineSpacingMultiplier = lineSpacingMultiplier;
         return this;
     }
@@ -190,7 +190,7 @@ public class TimePickerBuilder {
      * @param dividerColor
      */
 
-    public TimePickerBuilder setDividerColor(@ColorInt int dividerColor) {
+    public SimpleTimePickerBuilder setDividerColor(@ColorInt int dividerColor) {
         mPickerOptions.dividerColor = dividerColor;
         return this;
     }
@@ -200,7 +200,7 @@ public class TimePickerBuilder {
      *
      * @param dividerType
      */
-    public TimePickerBuilder setDividerType(WheelView.DividerType dividerType) {
+    public SimpleTimePickerBuilder setDividerType(SimpleWheelView.DividerType dividerType) {
         mPickerOptions.dividerType = dividerType;
         return this;
     }
@@ -211,7 +211,7 @@ public class TimePickerBuilder {
      * @param backgroundId color resId.
      */
     @Deprecated
-    public TimePickerBuilder setBackgroundId(int backgroundId) {
+    public SimpleTimePickerBuilder setBackgroundId(int backgroundId) {
         mPickerOptions.outSideColor = backgroundId;
         return this;
     }
@@ -221,7 +221,7 @@ public class TimePickerBuilder {
      *
      * @param outSideColor
      */
-    public TimePickerBuilder setOutSideColor(@ColorInt int outSideColor) {
+    public SimpleTimePickerBuilder setOutSideColor(@ColorInt int outSideColor) {
         mPickerOptions.outSideColor = outSideColor;
         return this;
     }
@@ -231,7 +231,7 @@ public class TimePickerBuilder {
      *
      * @param textColorCenter
      */
-    public TimePickerBuilder setTextColorCenter(@ColorInt int textColorCenter) {
+    public SimpleTimePickerBuilder setTextColorCenter(@ColorInt int textColorCenter) {
         mPickerOptions.textColorCenter = textColorCenter;
         return this;
     }
@@ -241,28 +241,28 @@ public class TimePickerBuilder {
      *
      * @param textColorOut
      */
-    public TimePickerBuilder setTextColorOut(@ColorInt int textColorOut) {
+    public SimpleTimePickerBuilder setTextColorOut(@ColorInt int textColorOut) {
         mPickerOptions.textColorOut = textColorOut;
         return this;
     }
 
-    public TimePickerBuilder isCyclic(boolean cyclic) {
+    public SimpleTimePickerBuilder isCyclic(boolean cyclic) {
         mPickerOptions.cyclic = cyclic;
         return this;
     }
 
-    public TimePickerBuilder setOutSideCancelable(boolean cancelable) {
+    public SimpleTimePickerBuilder setOutSideCancelable(boolean cancelable) {
         mPickerOptions.cancelable = cancelable;
         return this;
     }
 
-    public TimePickerBuilder setLunarCalendar(boolean lunarCalendar) {
+    public SimpleTimePickerBuilder setLunarCalendar(boolean lunarCalendar) {
         mPickerOptions.isLunarCalendar = lunarCalendar;
         return this;
     }
 
 
-    public TimePickerBuilder setLabel(String label_year, String label_month, String label_day, String label_hours, String label_mins, String label_seconds) {
+    public SimpleTimePickerBuilder setLabel(String label_year, String label_month, String label_day, String label_hours, String label_mins, String label_seconds) {
         mPickerOptions.label_year = label_year;
         mPickerOptions.label_month = label_month;
         mPickerOptions.label_day = label_day;
@@ -283,8 +283,8 @@ public class TimePickerBuilder {
      * @param x_offset_seconds 秒
      * @return
      */
-    public TimePickerBuilder setTextXOffset(int x_offset_year, int x_offset_month, int x_offset_day,
-                                            int x_offset_hours, int x_offset_minutes, int x_offset_seconds) {
+    public SimpleTimePickerBuilder setTextXOffset(int x_offset_year, int x_offset_month, int x_offset_day,
+                                                  int x_offset_hours, int x_offset_minutes, int x_offset_seconds) {
         mPickerOptions.x_offset_year = x_offset_year;
         mPickerOptions.x_offset_month = x_offset_month;
         mPickerOptions.x_offset_day = x_offset_day;
@@ -294,7 +294,7 @@ public class TimePickerBuilder {
         return this;
     }
 
-    public TimePickerBuilder isCenterLabel(boolean isCenterLabel) {
+    public SimpleTimePickerBuilder isCenterLabel(boolean isCenterLabel) {
         mPickerOptions.isCenterLabel = isCenterLabel;
         return this;
     }
@@ -303,12 +303,12 @@ public class TimePickerBuilder {
      * @param listener 切换item项滚动停止时，实时回调监听。
      * @return
      */
-    public TimePickerBuilder setTimeSelectChangeListener(OnTimeSelectChangeListener listener) {
+    public SimpleTimePickerBuilder setTimeSelectChangeListener(OnSimpleTimeSelectChangeListener listener) {
         mPickerOptions.timeSelectChangeListener = listener;
         return this;
     }
 
-    public TimePickerView build() {
-        return new TimePickerView(mPickerOptions);
+    public SimpleTimePickerView build() {
+        return new SimpleTimePickerView(mPickerOptions);
     }
 }

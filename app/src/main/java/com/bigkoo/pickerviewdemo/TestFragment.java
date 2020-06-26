@@ -14,10 +14,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
-import com.contrarywind.builder.TimePickerBuilder;
-import com.contrarywind.listener.CustomListener;
-import com.contrarywind.listener.OnTimeSelectListener;
-import com.contrarywind.view.TimePickerView;
+import com.contrarywind.builder.SimpleTimePickerBuilder;
+import com.contrarywind.listener.SimpleCustomListener;
+import com.contrarywind.listener.OnSimpleTimeSelectListener;
+import com.contrarywind.view.SimpleTimePickerView;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -26,7 +26,7 @@ import java.util.Date;
 public class TestFragment extends Fragment implements View.OnClickListener {
     private View mView;
     private Button btnShow;
-    private TimePickerView pvTime;
+    private SimpleTimePickerView pvTime;
     private FrameLayout mFrameLayout;
 
     @Nullable
@@ -57,7 +57,7 @@ public class TestFragment extends Fragment implements View.OnClickListener {
         Calendar endDate = Calendar.getInstance();
         endDate.set(2019, 11, 28);
         //时间选择器
-        pvTime = new TimePickerBuilder(getActivity(), new OnTimeSelectListener() {
+        pvTime = new SimpleTimePickerBuilder(getActivity(), new OnSimpleTimeSelectListener() {
             @Override
             public void onTimeSelect(Date date, View v) {//选中事件回调
                 // 这里回调过来的v,就是show()方法里面所添加的 View 参数，如果show的时候没有添加参数，v则为null
@@ -66,7 +66,7 @@ public class TestFragment extends Fragment implements View.OnClickListener {
                 btn.setText(getTime(date));
             }
         })
-                .setLayoutRes(R.layout.pickerview_custom_time, new CustomListener() {
+                .setLayoutRes(R.layout.pickerview_custom_time, new SimpleCustomListener() {
 
                     @Override
                     public void customLayout(View v) {

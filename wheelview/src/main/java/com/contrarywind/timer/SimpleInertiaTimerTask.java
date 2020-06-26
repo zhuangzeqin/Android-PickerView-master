@@ -1,6 +1,6 @@
 package com.contrarywind.timer;
 
-import com.contrarywind.view.WheelView;
+import com.contrarywind.view.SimpleWheelView;
 
 import java.util.TimerTask;
 
@@ -10,17 +10,17 @@ import java.util.TimerTask;
  * @author 小嵩
  * date:  2017-12-23 23:20:44
  */
-public final class InertiaTimerTask extends TimerTask {
+public final class SimpleInertiaTimerTask extends TimerTask {
 
     private float mCurrentVelocityY; //当前滑动速度
     private final float mFirstVelocityY;//手指离开屏幕时的初始速度
-    private final WheelView mWheelView;
+    private final SimpleWheelView mWheelView;
 
     /**
      * @param wheelView 滚轮对象
      * @param velocityY Y轴滑行速度
      */
-    public InertiaTimerTask(WheelView wheelView, float velocityY) {
+    public SimpleInertiaTimerTask(SimpleWheelView wheelView, float velocityY) {
         super();
         this.mWheelView = wheelView;
         this.mFirstVelocityY = velocityY;
@@ -42,7 +42,7 @@ public final class InertiaTimerTask extends TimerTask {
         //发送handler消息 处理平顺停止滚动逻辑
         if (Math.abs(mCurrentVelocityY) >= 0.0F && Math.abs(mCurrentVelocityY) <= 20F) {
             mWheelView.cancelFuture();
-            mWheelView.getHandler().sendEmptyMessage(MessageHandler.WHAT_SMOOTH_SCROLL);
+            mWheelView.getHandler().sendEmptyMessage(SimpleMessageHandler.WHAT_SMOOTH_SCROLL);
             return;
         }
 
@@ -74,6 +74,6 @@ public final class InertiaTimerTask extends TimerTask {
         }
 
         //刷新UI
-        mWheelView.getHandler().sendEmptyMessage(MessageHandler.WHAT_INVALIDATE_LOOP_VIEW);
+        mWheelView.getHandler().sendEmptyMessage(SimpleMessageHandler.WHAT_INVALIDATE_LOOP_VIEW);
     }
 }
